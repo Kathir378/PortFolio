@@ -229,3 +229,25 @@
                 }, 1500);
             });
         }
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+        const toolsItems = document.querySelectorAll(".tools-item");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add("show");
+                    }, index * 300); // Staggered effect
+                }
+            });
+        }, { threshold: 0.3 });
+
+        toolsItems.forEach(item => {
+            observer.observe(item);
+        });
+    });
